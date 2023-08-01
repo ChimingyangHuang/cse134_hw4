@@ -244,7 +244,7 @@ function safeRemove() {
     for (let i = body.children.length - 1; i >= 0; i--) {
 			  let element = body.children[i];
 
-        if (!element.matches("section") && !element.matches("script")) {
+        if (!element.matches("section")) {
           body.removeChild(element);
         }
     }
@@ -264,16 +264,12 @@ function remove() {
 }
 
 function basicClone(){
-	let toCloneList=document.getElementsByTagName('p')
-	let paragraphsArray = Array.from(toCloneList);
+	let toClone=document.getElementById('p1')
+	toClone=toClone.cloneNode(true)
+	toClone.removeAttribute("id")
 	let toAppend=document.getElementById("output")
-	for (let i = 0; i < paragraphsArray.length; i++) {
-    let clonedElement = paragraphsArray[i].cloneNode(true);
-    if (clonedElement.hasAttribute("id")) {
-      clonedElement.removeAttribute("id");
-    }
-		toAppend.appendChild(clonedElement);
-	}
+	
+	toAppend.appendChild(toClone);
 }
 
 function advancedClone() {
